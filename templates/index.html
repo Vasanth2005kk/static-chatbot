@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communist ChatBot</title>
+    <link rel="icon" href="{{ url_for ('static',filename='images/Untitled-removebg-preview.png')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chatoutputStyle.css') }}"> 
+
+</head>
+
+<body>
+    <div class="nav-bor">
+        <img src="static/images/Untitled-removebg-preview.png" alt="log" width="50px" height="50px">
+        <h1>HEADING</h1>
+        <button class="menu" aria-label="Main Menu" id="menuBTN">
+            <svg width="50" height="80" viewBox="0 0 100 100">
+                <path class="line line1"
+                    d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
+                <path class="line line2" d="M 20,50 H 80" />
+                <path class="line line3"
+                    d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" />
+            </svg>
+        </button>
+
+    </div>
+    <div class="menu-continer" id="active">
+        <ul>
+            <li>Admin</li>
+        </ul>
+    </div>
+    <div class="chat-questions">
+        <ul>
+            <li>1. மாநாடு நடைபெறும் நாட்கள்
+            </li>
+            <li>2. மாநாடு நடைபெறும் இடம்
+            </li>
+            <li>3. பிரதிநிதிகளுக்கு தேவையான தகவல்கள்
+            </li>
+            <li>4. பேரணி செல்லும் வழிதடம்
+            </li>
+            <li>5. பேரணிக்கு வரும் வாகனங்களை நிறுத்தவதற்கான வழிகாட்டுதல்</li>
+            <li>6. பிற தகவல்கள்
+            </li>
+        </ul>
+    </div>
+    <div class="chatoutput-continer">
+        <ul>
+            <li>
+                <div class="message">
+                    பல நூற்றாண்டுகளாக செய்யுள் வடிவமே தமிழ் இலக்கியங்களிலும், தத்துவங்களிலும் பயன்படுத்தப்பட்டது. உரை
+                    வடிவம் இலக்கணங்களுக்கும், செய்யுள் விளக்கம் கூறவதற்கும்,நூற்றாண்டிலேயே உரை வடிவம் வளர்ச்சி பெற்று,
+                    மக்களின் பல்வேறுபட்ட தேவைகளுக்கும் பயன்படுகின்றது. கட்டுரையே உரைநடை வெளிப்பாட்டின் முக்கிய வடிவம்
+                    ஆகும்.
+                </div>
+            </li>
+            <li>
+                <div class="message">
+                    பல நூற்றாண்டுகளாக செய்யுள் வடிவமே தமிழ் இலக்கியங்களிலும், தத்துவங்களிலும் பயன்படுத்தப்பட்டது. உரை
+                    வடிவம் இலக்கணங்களுக்கும், செய்யுள் விளக்கம் கூறவதற்கும்,நூற்றாண்டிலேயே உரை வடிவம் வளர்ச்சி பெற்று,
+                    மக்களின் பல்வேறுபட்ட தேவைகளுக்கும் பயன்படுகின்றது. கட்டுரையே உரைநடை வெளிப்பாட்டின் முக்கிய வடிவம்
+                    ஆகும்.
+                    <img src="images/istockphoto-868539730-612x612.jpg" alt="image">
+                </div>
+            </li>
+            <li></li>
+        </ul>
+        <div class="empty"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
