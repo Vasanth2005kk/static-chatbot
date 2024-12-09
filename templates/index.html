@@ -13,7 +13,7 @@
 
 <body>
     <div class="nav-bor">
-        <img src="static/images/Untitled-removebg-preview.png" alt="log" width="50px" height="50px">
+        <img src="{{url_for('static',filename='images/Untitled-removebg-preview.png')}}" alt="log" width="50px" height="50px">
         <h1>HEADING</h1>
         <button class="menu" aria-label="Main Menu" id="menuBTN">
             <svg width="50" height="80" viewBox="0 0 100 100">
@@ -28,7 +28,7 @@
     </div>
     <div class="menu-continer" id="active">
         <ul>
-            <li>Admin</li>
+            <li><a href="http://localhost:5000/login">Admin</a></li>
         </ul>
     </div>
     <div class="chat-questions">
@@ -62,14 +62,14 @@
                     வடிவம் இலக்கணங்களுக்கும், செய்யுள் விளக்கம் கூறவதற்கும்,நூற்றாண்டிலேயே உரை வடிவம் வளர்ச்சி பெற்று,
                     மக்களின் பல்வேறுபட்ட தேவைகளுக்கும் பயன்படுகின்றது. கட்டுரையே உரைநடை வெளிப்பாட்டின் முக்கிய வடிவம்
                     ஆகும்.
-                    <img src="images/istockphoto-868539730-612x612.jpg" alt="image">
+                    <img src="{{url_for('static',filename='images/istockphoto-868539730-612x612.jpg')}}" alt="image">
                 </div>
             </li>
             <li></li>
         </ul>
         <div class="empty"></div>
     </div>
-    <script src="script.js"></script>
+    <script src="{{url_for('static',filename='js/script.js')}}"></script>
 </body>
 
 </html>

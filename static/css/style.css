@@ -168,6 +168,10 @@
     color: #ffcc00;
     box-sizing: border-box;
 }
+.menu-continer ul li a{
+    color: #ffcc00;
+    text-decoration: none;
+}
 
 .menu-continer ul li:hover {
     opacity: 1;
