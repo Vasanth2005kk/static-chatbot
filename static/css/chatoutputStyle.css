@@ -40,7 +40,7 @@ body {
     padding: 10px 10px 10px 30px;
 }
 
-.chatoutput-continer {
+.chatoutput-container {
     width: 55%;
     height: 85vh;
     background-size: 100% 80vh;
@@ -54,7 +54,7 @@ body {
     overflow-x: hidden;
 }
 
-.chatoutput-continer ul {
+.chatoutput-container ul {
     position: relative;
     left: 60px;
     top: 20px;
@@ -62,10 +62,10 @@ body {
     padding: 0;
 }
 
-.chatoutput-continer ul li {
+.chatoutput-container ul li {
     margin-bottom: 20px;
-
 }
+
 
 .message {
     color: black;

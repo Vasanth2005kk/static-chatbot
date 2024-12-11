@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, url_for, render_template
+from flask import Flask, request, redirect, url_for, render_template,jsonify
 import os
 from werkzeug.utils import secure_filename
 import json
@@ -101,6 +101,11 @@ def addData():
         print(f"Error: {e}")
         return f"An error occurred: {e}", 500
 
+@app.route("/Datajson")
+def Datajson():
+    with open("Data.json", "r") as file:
+        data = json.load(file)
+    return jsonify(data)
 
 
 
