@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
 
 
 * {
@@ -18,37 +18,20 @@ body {
     cursor: pointer;
 }
 
-.add-q {
-    width: 100px;
-    height: 50px;
-    border-radius: 50px;
-    color: black;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    right: 30px;
-    top: 90px;
-    font-size: 25px;
-    cursor: pointer;
-
-}
-
-.admin-navbar button {
-    color: white;
+.back a {
+    color: aliceblue;
     width: 50px;
     height: 50px;
-    font-size: 45px;
+    font-size: 40px;
     position: absolute;
     top: 7px;
     left: 50px;
     background: none;
-    outline: none;
-    border: none;
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 10;
+    text-decoration: none;
 }
 
 .admin-navbar h1 {
@@ -107,12 +90,14 @@ body {
     padding: 10px;
     text-align: center;
     border: 1px solid black;
+    font-family: "Mulish", sans-serif;
 }
 
 
 .table-container th {
     text-align: center;
     background-color: #f4f4f4;
+    font-weight: 700;
 }
 
 
@@ -135,4 +120,130 @@ body {
 
 .btn-delete {
     background-color: #FF5733;
+}
+
+#add-q {
+    width: 100px;
+    height: 50px;
+    border-radius: 50px;
+    color: black;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 30px;
+    top: 90px;
+    cursor: pointer;
+
+}
+
+#add-q a {
+    color: black;
+    font-size: 25px;
+    text-decoration: none;
+    font-weight: 700;
+    font-family: "Mulish", sans-serif;
+
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.close-btn {
+    align-self: flex-end;
+    cursor: pointer;
+    font-size: 1.5em;
+    color: #aaa;
+}
+
+.modal-content {
+    width: 90%;
+    max-width: 500px;
+    /* Ensures the modal doesn't get too wide */
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Subtle shadow for a floating effect */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* Space between form elements */
+    position: relative;
+}
+
+.modal-content label {
+    font-size: 17px;
+    color: #333;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.modal-content input[type="text"],
+.modal-content textarea,
+.modal-content input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    /* Subtle border */
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin: 10px;
+    /* Ensures padding doesn't break layout */
+}
+
+.modal-content textarea {
+    resize: none;
+    /* Prevents resizing */
+    height: 80px;
+    /* Fixed height for text areas */
+}
+
+.modal-content button {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: relative;
+    left: 45%;
+}
+
+.modal-content button:hover {
+    background-color: #0056b3;
+}
+
+.modal-content .close-btn {
+    font-size: 20px;
+    font-weight: bold;
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.modal-content .close-btn:hover {
+    color: #333;
+    /* Darker shade on hover */
 }

@@ -14,7 +14,7 @@
 <body>
     <div class="nav-bor">
         <img src="{{url_for('static',filename='images/Untitled-removebg-preview.png')}}" alt="log" width="50px" height="50px">
-        <h1>HEADING</h1>
+        <h1><span class="number">24</span>வது தமிழ்நாடு மாநில மாநாடு <br><span>( மாநாடு குறித்த விவரங்கள் )</span></h1>
         <button class="menu" aria-label="Main Menu" id="menuBTN">
             <svg width="50" height="80" viewBox="0 0 100 100">
                 <path class="line line1"
@@ -32,19 +32,14 @@
         </ul>
     </div>
     <div class="chat-questions">
+        {% if all_questions %}
         <ul>
-            <li>1. மாநாடு நடைபெறும் நாட்கள்
-            </li>
-            <li>2. மாநாடு நடைபெறும் இடம்
-            </li>
-            <li>3. பிரதிநிதிகளுக்கு தேவையான தகவல்கள்
-            </li>
-            <li>4. பேரணி செல்லும் வழிதடம்
-            </li>
-            <li>5. பேரணிக்கு வரும் வாகனங்களை நிறுத்தவதற்கான வழிகாட்டுதல்</li>
-            <li>6. பிற தகவல்கள்
-            </li>
+            {% for question in all_questions %}
+            <li>{{ loop.index }}. {{question['question']}}</li>
+            {% endfor %}
         </ul>
+        {% endif %}
+
     </div>
     <div class="chatoutput-continer">
         <ul>

@@ -1,60 +1,49 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const editButton = document.getElementById("edit-button");
-    const editSection = document.getElementById("edit-section");
-    const editFormsContainer = document.getElementById("edit-forms-container");
-    const addEditFormButton = document.getElementById("add-edit-form-button");
-    const submitAllButton = document.getElementById("submit-all-button");
+document.addEventListener('DOMContentLoaded', function () {
+    // Edit modal elements
+    const editModal = document.getElementById('edit-modal');
+    const editForm = document.getElementById('edit-form');
+    const editCloseBtn = editModal.querySelector('.close-btn');
 
-    // Show the edit section
-    editButton.addEventListener("click", () => {
-      editSection.classList.toggle("hidden");
+    // Show the edit modal when an edit button is clicked
+    document.querySelectorAll('.btn-edit').forEach((button, index) => {
+        button.addEventListener('click', function () {
+            const row = button.closest('tr');
+            const question = row.cells[1].textContent;
+
+            // Populate the edit form with existing data
+            document.getElementById('edit-question').value = question;
+            document.getElementById('edit-answer').value = ""; // Update with existing answer if stored
+
+            editModal.style.display = 'block';
+
+            // Save changes on form submit
+            editForm.onsubmit = function (e) {
+                e.preventDefault();
+
+                const updatedQuestion = document.getElementById('edit-question').value;
+                const updatedAnswer = document.getElementById('edit-answer').value;
+                const updatedImage = document.getElementById('edit-image').files[0];
+
+                if (updatedQuestion && updatedAnswer) {
+                    console.log('Updated Question:', updatedQuestion);
+                    console.log('Updated Answer:', updatedAnswer);
+                    console.log('Updated Image:', updatedImage);
+
+                    // Update the table row
+                    row.cells[1].textContent = updatedQuestion;
+
+                    // Close the modal
+                    editForm.reset();
+                    editModal.style.display = 'none';
+                } else {
+                    alert('Please fill in all fields.');
+                }
+            };
+        });
     });
 
-    // Add a new edit form block
-    addEditFormButton.addEventListener("click", () => {
-      const newEditSection = document.querySelector(".edit-section-container").cloneNode(true);
-      const inputs = newEditSection.querySelectorAll("input, textarea");
-      inputs.forEach(input => (input.value = "")); // Clear input values
-      editFormsContainer.appendChild(newEditSection);
+    // Close the edit modal
+    editCloseBtn.addEventListener('click', function () {
+        editModal.style.display = 'none';
     });
-
-    // Handle submission of all forms
-    submitAllButton.addEventListener("click", () => {
-      const forms = document.querySelectorAll(".edit-form");
-      const data = Array.from(forms).map((form) => {
-        const formData = new FormData(form);
-        const question = formData.get("question");
-        const answers = formData.get("answers");
-        const imageUpload = formData.get("image-upload");
-
-        return {
-          question,
-          answers,
-          image: imageUpload ? imageUpload.name : "No image uploaded",
-        };
-      });
-
-      console.log("All Submitted Data:", data);
-      alert("All questions and answers have been submitted successfully!");
-
-      // Clear all forms
-      editFormsContainer.innerHTML = `
-        <div class="edit-section-container">
-          <form class="edit-form">
-            <div class="form-group">
-              <label for="question">Question:</label>
-              <input type="text" name="question" placeholder="Enter the question" required>
-            </div>
-            <div class="form-group">
-              <label for="answers">Answer:</label>
-              <textarea name="answers" rows="4" placeholder="Enter the answer(s)" required></textarea>
-            </div>
-            <div class="form-group">
-              <label for="image-upload">Upload Image:</label>
-              <input type="file" name="image-upload" accept="image/*">
-            </div>
-          </form>
-        </div>
-      `;
-    });
-  });
+});

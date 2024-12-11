@@ -7,16 +7,17 @@
     <title>Admin</title>
     <link rel="icon" href="images/Untitled-removebg-preview.png">
     <link rel="stylesheet" href="{{url_for('static',filename='css/admin.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}"> 
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
         integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 <body>
+    <div class="back"><a href="http://127.0.0.1:5000"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </a></div>
     <div class="admin-navbar">
-        <button><i class="fa-solid fa-house"></i></button>
         <h1>Admin</h1>
         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="grid" role="img"
             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-grid fa-lg">
@@ -35,9 +36,13 @@
         </svg>
         <div class="admin-image">a</div>
     </div>
-    <div class="add-q">add</div>
+    <div id="add-q">
+        <a href="javascript:void(0)">Add</a>
+    </div>
+
     <div class="main-table">
         <div class="table-container">
+            {% if all_questions %}
             <table>
                 <thead>
                     <tr>
@@ -49,9 +54,10 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for question in all_questions %}
                     <tr>
-                        <td>1</td>
-                        <td>John Doe</td>
+                        <td>{{ loop.index }}.</td>
+                        <td style="text-align:left; padding-left: 2%;">{{ question['question'] }}</td>
                         <td>
                             <button class="btn btn-view">View</button>
                         </td>
@@ -60,41 +66,72 @@
                         </td>
                         <td>
                             <button class="btn btn-delete">Delete</button>
-
                         </td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jane Smith</td>
-                        <td>
-                            <button class="btn btn-view">View</button>
-                        </td>
-                        <td>
-                            <button class="btn btn-edit">Edit</button>
-                        </td>
-                        <td>
-                            <button class="btn btn-delete">Delete</button>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Michael Brown</td>
-                        <td>
-                            <button class="btn btn-view">View</button>
-                        </td>
-                        <td>
-                            <button class="btn btn-edit">Edit</button>
-                        </td>
-                        <td>
-                            <button class="btn btn-delete">Delete</button>
-
-                        </td>
-                    </tr>
+                    {% endfor %}
+                    
                 </tbody>
             </table>
+            {% endif %}
         </div>
     </div>
+    <!-- Hidden modal for adding functionality -->
+    <div id="add-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <form id="add-form" action="/addData" method="post" enctype="multipart/form-data">
+                <label for="question">Question:</label>
+                <input type="text" id="question" name="question" required>
+
+                <label for="answer">Answer:</label>
+                <textarea id="answer" name="answer" required></textarea>
+
+                <label for="image">Identify Image:</label>
+                <input type="file" id="image" name="image" accept="image/*">
+
+                <button type="submit">Add</button>
+            </form>
+
+        </div>
+    </div>
+    <!-- View Modal -->
+    <div id="view-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>View Details</h2>
+            <p><strong>Question:</strong> <span id="view-question"></span></p>
+            <p><strong>Answer:</strong> <span id="view-answer"></span></p>
+            <div>
+                <strong>Image:</strong>
+                <img id="view-image" src="" alt="No image available" style="max-width: 100%; height: auto;">
+            </div>
+        </div>
+    </div>
+    <!-- Edit Modal -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <form id="edit-form">
+                <label for="edit-question">Question:</label>
+                <input type="text" id="edit-question" name="question" required>
+
+                <label for="edit-answer">Answer:</label>
+                <textarea id="edit-answer" name="answer" required></textarea>
+
+                <label for="edit-image">Identify Image:</label>
+                <input type="file" id="edit-image" name="image" accept="image/*">
+
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+    <script src="{{ url_for('static',filename='js/add.js')}}"></script>
+    <script src="{{ url_for('static',filename='js/view.js')}}"></script>
+    <script src="{{ url_for('static',filename='js/edit.js')}}"></script>
+    <script src="{{ url_for('static',filename='js/delete.js')}}"></script>
+
+
+
 </body>
 
 </html>
