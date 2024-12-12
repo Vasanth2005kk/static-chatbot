@@ -47,7 +47,14 @@ function addMessage(text, type, image = "") {
     const chatOutput = document.getElementById('chatOutput');
     const messageDiv = document.createElement('div');
     messageDiv.classList.add('message', type);
-    messageDiv.textContent = text;
+
+    // Replace newlines with <br> for HTML rendering
+    const formattedText = text.replace(/\r?\n/g, '<br>');
+
+    // Add text content
+    const textSpan = document.createElement('span');
+    textSpan.innerHTML = formattedText; // Use innerHTML to render <br>
+    messageDiv.appendChild(textSpan);
 
     // Check if an image is provided and add it to the message
     if (image) {
@@ -56,6 +63,13 @@ function addMessage(text, type, image = "") {
         img.alt = "Response Image";
         img.style.maxWidth = "100%";
         img.style.borderRadius = "8px";
+
+        // Handle image load error
+        img.onerror = () => {
+            console.warn(`Image not found: ${image}`);
+            img.remove(); // Remove the image element if it fails to load
+        };
+
         messageDiv.appendChild(img);
     }
 
@@ -64,6 +78,7 @@ function addMessage(text, type, image = "") {
     chatOutput.appendChild(li);
     chatOutput.scrollTop = chatOutput.scrollHeight;
 }
+
 
 // Initialize data loading
 loadData();
